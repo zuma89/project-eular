@@ -2,23 +2,23 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
-	fileBuf, err := ioutil.ReadFile("problem11.txt")
+	fileBuf, err := os.ReadFile("problem11.txt")
 	if err != nil {
 		panic(err.Error())
 	}
 	fileStr := string(fileBuf)
-	lines := strings.Split(fileStr, "\n", 20)
+	lines := strings.Split(fileStr, "\n")
 	arr := make([][]uint, 20)
 	var strArr []string
 	for i := range lines {
 		arr[i] = make([]uint, 20)
-		strArr = strings.Split(lines[i], " ", 20)
+		strArr = strings.Split(lines[i], " ")
 		for j := range arr[i] {
 			intvalue, _ := strconv.Atoi(strArr[j])
 			arr[i][j] = uint(intvalue)
